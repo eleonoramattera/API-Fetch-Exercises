@@ -1,4 +1,4 @@
-const fetchPost = async () => {
+/*const fetchPost = async () => {
   try {
     let res = await fetch("https://jsonplaceholder.typicode.com/posts");
 
@@ -32,4 +32,35 @@ const fetchPost = async () => {
   }
 };
 
-fetchPost();
+fetchPost(); */
+
+const fetchPostbyid = async function () {
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+
+    if (res.ok) {
+      let data1 = await res.json();
+      console.log(data1);
+
+      const row2 = document.querySelector("#row");
+      data1.forEach((id) => {
+        row2.innerHTML += `
+        <div class="card" style="width: 18rem;">
+  <div class="card-header">
+    ""${id.id}
+  </div>
+  
+</div>
+        
+        
+        `;
+      });
+    } else {
+      console.log("errore");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+fetchPostbyid();
